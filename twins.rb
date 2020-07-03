@@ -10,6 +10,8 @@ class Twins
         str_b = array_b[index]
         if str_a.length != str_b.length
           result << 'NO'
+        elsif str_a.eql?(str_b)
+          result << 'YES'
         else
           result.concat(perform_swap_ops(str_a, str_b))
         end
@@ -34,4 +36,4 @@ class Twins
 
 end
 
-puts Twins::do_twin_check(["abcd","abcd", "abc"],["cdab", "bcda", "ab"])
+puts Twins::do_twin_check(["abcd","abcd", "abc", "abcd"],["cdab", "bcda", "ab", "abcd"])
