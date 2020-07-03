@@ -1,7 +1,7 @@
-require_relative "swappable"
+require_relative "checkable"
 
 class Twins
-  extend Swappable
+  extend Checkable
 
   class << self
     def do_twin_check(array_a, array_b)
@@ -10,30 +10,22 @@ class Twins
         str_b = array_b[index]
         if str_a.length != str_b.length
           result << 'NO'
-        elsif str_a.eql?(str_b)
-          result << 'YES'
         else
-          result.concat(perform_swap_ops(str_a, str_b))
+          result << check_operations(str_a, str_b)
         end
       end
       result.to_s
     end
 
     private
-      def perform_swap_ops(str_a, str_b)
-        result = []
-        new_str_a = swap_even(str_a)
-        if new_str_a.eql?(str_b)
-          result << 'YES'
-        elsif swap_odd(new_str_a).eql?(str_b)
-          result << 'YES'
-        else
-          result << 'NO'
-        end
-        result
+      def check_operations(str_a, str_b)
+        correctly_swapped?(str_a, str_b) ? 'YES' : 'NO'
       end
   end
 
 end
 
-puts Twins::do_twin_check(["abcd","abcd", "abc", "abcd"],["cdab", "bcda", "ab", "abcd"])
+puts Twins::do_twin_check(
+  ["abcd","abcd", "abc", "abcd", "abcde", "damien"],
+  ["cdab", "bcda", "ab", "abcd", "ebadc", "madein"]
+)
