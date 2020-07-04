@@ -26,6 +26,7 @@ class Twins
 end
 
 puts Twins::do_twin_check(
-  ["abcd","abcd", "abc", "abcd", "abcde", "damien"],
-  ["cdab", "bcda", "ab", "abcd", "ebadc", "madein"]
+  ["abcd","abcd", "abc", "abcd", "abcde", "damien", "ella", "ella", "ella"],
+  ["cdab", "bcda", "ab", "abcd", "ebadc", "madein", "ella", "lela", "llea"]
 )
+# => ["YES", "NO", "NO", "YES", "YES", "NO", "YES", "NO", "YES"]

@@ -9,12 +9,22 @@ module Checkable
     correctly_swapped = true
     str_a.chars.each_with_index do |char, index|
       if index.even?
-        return false unless correctly_swapped && str_b.index(char).even?
+        return false unless correctly_swapped && indexes_of(char, str_b).any? { |i| i.even? }
       else
-        return false unless correctly_swapped && str_b.index(char).odd?
+        return false unless correctly_swapped && indexes_of(char, str_b).any? { |i| i.odd? }
       end
     end
     correctly_swapped
+  end
+
+  # returns array of indexes for a given char in a given string
+  # or empty array if given char is not present in given string
+  def indexes_of(char, str)
+    indexes = []
+    str.chars.each_with_index do |current_char, index|
+      indexes << index if current_char.eql?(char)
+    end
+    indexes
   end
 
 end
